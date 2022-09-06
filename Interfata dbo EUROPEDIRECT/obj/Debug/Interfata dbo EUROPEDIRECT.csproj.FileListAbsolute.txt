@@ -1,0 +1,30 @@
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\bin\Debug\Interfata dbo EUROPEDIRECT.exe.config
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\bin\Debug\Interfata dbo EUROPEDIRECT.exe
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\bin\Debug\Interfata dbo EUROPEDIRECT.pdb
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.csproj.AssemblyReference.cache
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.csproj.SuggestedBindingRedirects.cache
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata_dbo_EUROPEDIRECT.frmMeniuPrincipal.resources
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata_dbo_EUROPEDIRECT.Properties.Resources.resources
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.csproj.GenerateResource.cache
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.csproj.CoreCompileInputs.cache
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.csproj.CopyComplete
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.exe
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.pdb
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata_dbo_EUROPEDIRECT.frmModificari.resources
+C:\Users\ovidi\source\repos\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata_dbo_EUROPEDIRECT.frmVizite.resources
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\bin\Debug\Interfata dbo EUROPEDIRECT.exe.config
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\bin\Debug\Interfata dbo EUROPEDIRECT.exe
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\bin\Debug\Interfata dbo EUROPEDIRECT.pdb
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\bin\Debug\FontAwesome.Sharp.dll
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.csproj.AssemblyReference.cache
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.csproj.SuggestedBindingRedirects.cache
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata_dbo_EUROPEDIRECT.frmMeniuPrincipal.resources
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata_dbo_EUROPEDIRECT.frmModificari.resources
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata_dbo_EUROPEDIRECT.frmVizite.resources
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata_dbo_EUROPEDIRECT.Properties.Resources.resources
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.csproj.GenerateResource.cache
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.csproj.CoreCompileInputs.cache
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.csproj.CopyComplete
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.exe
+C:\Interfata dbo EUROPEDIRECT\Interfata dbo EUROPEDIRECT\obj\Debug\Interfata dbo EUROPEDIRECT.pdb
