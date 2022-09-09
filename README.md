@@ -1,15 +1,15 @@
-# Infertafa baza de date EUROPEDIRECT
-Acest proiect are nevoie de un folder "Raport" partitia C pentru a exporta raporturile si o baza de date cu numele "SQL Evidenta"
-Daca doriti un alt nume pentru baza de date accesati fisierul app.config din fisierul Interfata dbo EUROPEDIRECT si modificati urmaroare linie de cod 
+# EUROPEDIRECT database visual interface
+This project needs a "Report" folder in the C:\ partition to export the reports and a database named "SQL Evidence".
+If you want another name for the database, access the "app.config" file from the "Interfata dbo EUROPEDIRECT" file and modify the following line of code.
 
 
 <add name="ConexiuneDBO" connectionString ="Data Source=.\SQLEXPRESS;Initial Catalog=SQL Evidenta;Integrated Security=True"/>
 
 
-In loc de SQL Evidenta introduceti numele bazei de date "Initial Catalog=NumelDorit"
+Replace "SQL Evidence" with the desired name "Initial Catalog=Desired Name"
 
-Baza de date a fost creata prin Microsoft SQL Server Management Studio 18
-Instalati Microsoft SQL Server Management Studio 18 creati o baza de date cu numele SQL Evidenta sau ce nume doriti deschideti un querry si introduceti pe rand urmatoarele
+The database was created using "Microsoft SQL Server Management Studio 18".
+Install "Microsoft SQL Server Management Studio 18", create a database with the name "SQL Evidenta" or whatever name you want, open a query and enter the following in turn.
 
 
 CREATE TABLE [dbo].[PersNoi] (
@@ -78,8 +78,3 @@ AS
     INSERT INTO Vizite(TipulVizitei,Prenume,Nume,Varsta,Studii,Ocupatie,Subiect,Domiciliu,Sex)
     VALUES (@TipulVizitei,@Prenume,@Nume,@Varsta,@Studii,@Ocupatie,@Subiect,@Domiciliu,@Sex)
     
-    
- Daca ati urmarit pasi felicitari programul este perfect functional
- 
- 
- 
