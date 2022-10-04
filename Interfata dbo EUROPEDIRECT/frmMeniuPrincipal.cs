@@ -241,16 +241,16 @@ namespace Interfata_dbo_EUROPEDIRECT
                 sqlcon.Open();
                 using (SqlDataReader reader = sqlCmd.ExecuteReader())
                 {
-                    StreamWriter titlu = new StreamWriter("C:\\Raport\\" + numeFisier + ".docx", true);
+                    StreamWriter titlu = new StreamWriter("C:\\Raport\\" + numeFisier + ".doc", true);
                     titlu.WriteLine(" Vizite noi ");
                     titlu.Close();
                     while (reader.Read())
                     {
-                        StreamWriter sw = new StreamWriter("C:\\Raport\\" + numeFisier + ".docx", true);
+                        StreamWriter sw = new StreamWriter("C:\\Raport\\" + numeFisier + ".doc", true);
                         sw.WriteLine(String.Format("{0}, {1}", reader[0], reader[1]));
                         sw.Close();
                     }
-                    StreamWriter spatiu = new StreamWriter("C:\\Raport\\" + numeFisier + ".docx", true);
+                    StreamWriter spatiu = new StreamWriter("C:\\Raport\\" + numeFisier + ".doc", true);
                     spatiu.WriteLine(" ");
                     spatiu.Close();
                 }
@@ -265,16 +265,16 @@ namespace Interfata_dbo_EUROPEDIRECT
                     sqlcon.Open();
                     using (SqlDataReader reader = sqlCmd.ExecuteReader())
                     {
-                        StreamWriter titlu = new StreamWriter("C:\\Raport\\" + numeFisier + ".docx", true);
+                        StreamWriter titlu = new StreamWriter("C:\\Raport\\" + numeFisier + ".doc", true);
                         titlu.WriteLine(" " + stringArr[i] + " ");
                         titlu.Close();
                         while (reader.Read())
                         {
-                            StreamWriter sw = new StreamWriter("C:\\Raport\\" + numeFisier + ".docx", true);
+                            StreamWriter sw = new StreamWriter("C:\\Raport\\" + numeFisier + ".doc", true);
                             sw.WriteLine(String.Format("{0}, {1}", reader[0], reader[1]));
                             sw.Close();
                         }
-                        StreamWriter spatiu = new StreamWriter("C:\\Raport\\" + numeFisier + ".docx", true);
+                        StreamWriter spatiu = new StreamWriter("C:\\Raport\\" + numeFisier + ".doc", true);
                         spatiu.WriteLine(" ");
                         spatiu.Close();
                     }

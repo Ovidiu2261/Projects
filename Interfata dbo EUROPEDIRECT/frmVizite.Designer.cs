@@ -487,9 +487,9 @@
             this.checkBoxAltceva.ForeColor = System.Drawing.Color.Gainsboro;
             this.checkBoxAltceva.Location = new System.Drawing.Point(221, 469);
             this.checkBoxAltceva.Name = "checkBoxAltceva";
-            this.checkBoxAltceva.Size = new System.Drawing.Size(73, 21);
+            this.checkBoxAltceva.Size = new System.Drawing.Size(62, 21);
             this.checkBoxAltceva.TabIndex = 33;
-            this.checkBoxAltceva.Text = "Altceva";
+            this.checkBoxAltceva.Text = "Altele";
             this.checkBoxAltceva.UseVisualStyleBackColor = true;
             this.checkBoxAltceva.CheckedChanged += new System.EventHandler(this.checkBoxAltceva_CheckedChanged);
             // 

@@ -37,10 +37,14 @@
             this.checkBoxTday = new System.Windows.Forms.CheckBox();
             this.labelData = new System.Windows.Forms.Label();
             this.textBoxPrenume = new System.Windows.Forms.TextBox();
-            this.labelNume = new System.Windows.Forms.Label();
+            this.labelNumeIntreg = new System.Windows.Forms.Label();
             this.textBoxNume = new System.Windows.Forms.TextBox();
             this.dataGridViewVizite = new System.Windows.Forms.DataGridView();
             this.buttonUpdate = new FontAwesome.Sharp.IconButton();
+            this.checkBoxFeminin = new System.Windows.Forms.CheckBox();
+            this.checkBoxMasculin = new System.Windows.Forms.CheckBox();
+            this.checkBoxAltele = new System.Windows.Forms.CheckBox();
+            this.labelSex = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVizite)).BeginInit();
             this.SuspendLayout();
             // 
@@ -152,16 +156,16 @@
             this.textBoxPrenume.Size = new System.Drawing.Size(120, 22);
             this.textBoxPrenume.TabIndex = 29;
             // 
-            // labelNume
+            // labelNumeIntreg
             // 
-            this.labelNume.AutoSize = true;
-            this.labelNume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNume.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelNume.Location = new System.Drawing.Point(390, 30);
-            this.labelNume.Name = "labelNume";
-            this.labelNume.Size = new System.Drawing.Size(113, 16);
-            this.labelNume.TabIndex = 30;
-            this.labelNume.Text = "Nume si Prenume";
+            this.labelNumeIntreg.AutoSize = true;
+            this.labelNumeIntreg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumeIntreg.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelNumeIntreg.Location = new System.Drawing.Point(390, 30);
+            this.labelNumeIntreg.Name = "labelNumeIntreg";
+            this.labelNumeIntreg.Size = new System.Drawing.Size(113, 16);
+            this.labelNumeIntreg.TabIndex = 30;
+            this.labelNumeIntreg.Text = "Prenume si Nume";
             // 
             // textBoxNume
             // 
@@ -196,7 +200,7 @@
             this.buttonUpdate.IconColor = System.Drawing.Color.Gainsboro;
             this.buttonUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.buttonUpdate.IconSize = 40;
-            this.buttonUpdate.Location = new System.Drawing.Point(525, 65);
+            this.buttonUpdate.Location = new System.Drawing.Point(645, 65);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(125, 50);
             this.buttonUpdate.TabIndex = 33;
@@ -205,16 +209,66 @@
             this.buttonUpdate.UseVisualStyleBackColor = true;
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
+            // checkBoxFeminin
+            // 
+            this.checkBoxFeminin.AutoSize = true;
+            this.checkBoxFeminin.ForeColor = System.Drawing.Color.Gainsboro;
+            this.checkBoxFeminin.Location = new System.Drawing.Point(545, 59);
+            this.checkBoxFeminin.Name = "checkBoxFeminin";
+            this.checkBoxFeminin.Size = new System.Drawing.Size(62, 17);
+            this.checkBoxFeminin.TabIndex = 34;
+            this.checkBoxFeminin.Text = "Feminin";
+            this.checkBoxFeminin.UseVisualStyleBackColor = true;
+            this.checkBoxFeminin.CheckedChanged += new System.EventHandler(this.checkBoxFeminin_CheckedChanged);
+            // 
+            // checkBoxMasculin
+            // 
+            this.checkBoxMasculin.AutoSize = true;
+            this.checkBoxMasculin.ForeColor = System.Drawing.Color.Gainsboro;
+            this.checkBoxMasculin.Location = new System.Drawing.Point(545, 83);
+            this.checkBoxMasculin.Name = "checkBoxMasculin";
+            this.checkBoxMasculin.Size = new System.Drawing.Size(68, 17);
+            this.checkBoxMasculin.TabIndex = 35;
+            this.checkBoxMasculin.Text = "Masculin";
+            this.checkBoxMasculin.UseVisualStyleBackColor = true;
+            this.checkBoxMasculin.CheckedChanged += new System.EventHandler(this.checkBoxMasculin_CheckedChanged);
+            // 
+            // checkBoxAltele
+            // 
+            this.checkBoxAltele.AutoSize = true;
+            this.checkBoxAltele.ForeColor = System.Drawing.Color.Gainsboro;
+            this.checkBoxAltele.Location = new System.Drawing.Point(545, 107);
+            this.checkBoxAltele.Name = "checkBoxAltele";
+            this.checkBoxAltele.Size = new System.Drawing.Size(52, 17);
+            this.checkBoxAltele.TabIndex = 36;
+            this.checkBoxAltele.Text = "Altele";
+            this.checkBoxAltele.UseVisualStyleBackColor = true;
+            this.checkBoxAltele.CheckedChanged += new System.EventHandler(this.checkBoxAltele_CheckedChanged);
+            // 
+            // labelSex
+            // 
+            this.labelSex.AutoSize = true;
+            this.labelSex.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelSex.Location = new System.Drawing.Point(566, 32);
+            this.labelSex.Name = "labelSex";
+            this.labelSex.Size = new System.Drawing.Size(25, 13);
+            this.labelSex.TabIndex = 37;
+            this.labelSex.Text = "Sex";
+            // 
             // frmModificari
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.ClientSize = new System.Drawing.Size(1044, 601);
+            this.Controls.Add(this.labelSex);
+            this.Controls.Add(this.checkBoxAltele);
+            this.Controls.Add(this.checkBoxMasculin);
+            this.Controls.Add(this.checkBoxFeminin);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.dataGridViewVizite);
             this.Controls.Add(this.textBoxNume);
-            this.Controls.Add(this.labelNume);
+            this.Controls.Add(this.labelNumeIntreg);
             this.Controls.Add(this.textBoxPrenume);
             this.Controls.Add(this.labelData);
             this.Controls.Add(this.checkBoxAllTime);
@@ -244,9 +298,13 @@
         private System.Windows.Forms.CheckBox checkBoxTday;
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.TextBox textBoxPrenume;
-        private System.Windows.Forms.Label labelNume;
+        private System.Windows.Forms.Label labelNumeIntreg;
         private System.Windows.Forms.TextBox textBoxNume;
         private System.Windows.Forms.DataGridView dataGridViewVizite;
         private FontAwesome.Sharp.IconButton buttonUpdate;
+        private System.Windows.Forms.CheckBox checkBoxFeminin;
+        private System.Windows.Forms.CheckBox checkBoxMasculin;
+        private System.Windows.Forms.CheckBox checkBoxAltele;
+        private System.Windows.Forms.Label labelSex;
     }
 }
