@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -15,7 +9,7 @@ namespace Interfata_dbo_EUROPEDIRECT
     public partial class frmModificari : Form
     {
         private string sex = string.Empty;
-        private string titlu = "Persoane";
+        private string titlu = string.Empty;
         public frmModificari()
         {
             InitializeComponent();
@@ -84,16 +78,38 @@ namespace Interfata_dbo_EUROPEDIRECT
 
         private bool GetListaPersVechi()
         {
-            DataTable dtListaPersVechi = new DataTable();
+            titlu = "Persoane Vechi";
+            DataTable dtListaPersNoi = new DataTable();
             SqlConnection sqlcon = new SqlConnection();
             sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
-            using (SqlCommand sqlcmd = new SqlCommand("SELECT * FROM [dbo].[PersVechi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "'", sqlcon))
+            if (comboBoxColumn.Text == "Prenume")
             {
-                sqlcon.Open();
-                SqlDataReader reader = sqlcmd.ExecuteReader();
-                dtListaPersVechi.Load(reader);
+                using (SqlCommand sqlcmd = new SqlCommand("SELECT * FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxValue.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' AND [PersoaneUnice] = '" + titlu + "'; ", sqlcon))
+                {
+                    sqlcon.Open();
+                    SqlDataReader reader = sqlcmd.ExecuteReader();
+                    dtListaPersNoi.Load(reader);
+                }
             }
-            if (dtListaPersVechi.Rows.Count == 0)
+            else if (comboBoxColumn.Text == "Nume")
+            {
+                using (SqlCommand sqlcmd = new SqlCommand("SELECT * FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxValue.Text + "' AND [Sex] = '" + sex + "' AND [PersoaneUnice] = '" + titlu + "'; ", sqlcon))
+                {
+                    sqlcon.Open();
+                    SqlDataReader reader = sqlcmd.ExecuteReader();
+                    dtListaPersNoi.Load(reader);
+                }
+            }
+            else if (comboBoxColumn.Text == "Sex")
+            {
+                using (SqlCommand sqlcmd = new SqlCommand("SELECT * FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + textBoxValue.Text + "' AND [PersoaneUnice] = '" + titlu + "'; ", sqlcon))
+                {
+                    sqlcon.Open();
+                    SqlDataReader reader = sqlcmd.ExecuteReader();
+                    dtListaPersNoi.Load(reader);
+                }
+            }
+            if (dtListaPersNoi.Rows.Count == 0)
                 return false;
             else
                 return true;
@@ -101,14 +117,36 @@ namespace Interfata_dbo_EUROPEDIRECT
 
         private bool GetListaPersNoi()
         {
+            titlu = "Persoane Unice";
             DataTable dtListaPersNoi = new DataTable();
             SqlConnection sqlcon = new SqlConnection();
             sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
-            using (SqlCommand sqlcmd = new SqlCommand("SELECT * FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "'", sqlcon))
+            if (comboBoxColumn.Text == "Prenume")
             {
-                sqlcon.Open();
-                SqlDataReader reader = sqlcmd.ExecuteReader();
-                dtListaPersNoi.Load(reader);
+                using (SqlCommand sqlcmd = new SqlCommand("SELECT * FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxValue.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' AND [PersoaneUnice] = '" + titlu + "'; ", sqlcon))
+                {
+                    sqlcon.Open();
+                    SqlDataReader reader = sqlcmd.ExecuteReader();
+                    dtListaPersNoi.Load(reader);
+                }
+            }
+            else if (comboBoxColumn.Text == "Nume")
+            {
+                using (SqlCommand sqlcmd = new SqlCommand("SELECT * FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxValue.Text + "' AND [Sex] = '" + sex + "' AND [PersoaneUnice] = '" + titlu + "'; ", sqlcon))
+                {
+                    sqlcon.Open();
+                    SqlDataReader reader = sqlcmd.ExecuteReader();
+                    dtListaPersNoi.Load(reader);
+                }
+            }
+            else if (comboBoxColumn.Text == "Sex")
+            {
+                using (SqlCommand sqlcmd = new SqlCommand("SELECT * FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + textBoxValue.Text + "' AND [PersoaneUnice] = '" + titlu + "'; ", sqlcon))
+                {
+                    sqlcon.Open();
+                    SqlDataReader reader = sqlcmd.ExecuteReader();
+                    dtListaPersNoi.Load(reader);
+                }
             }
             if (dtListaPersNoi.Rows.Count == 0)
                 return false;
@@ -148,27 +186,21 @@ namespace Interfata_dbo_EUROPEDIRECT
                         {
                             sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
                             sqlcon.Open();
-                            SqlCommand addPersNoi = new SqlCommand("PersNoiADD", sqlcon);
-                            addPersNoi.CommandType = CommandType.StoredProcedure;
-                            addPersNoi.Parameters.AddWithValue("@NumePers", textBoxValue.Text.Trim() + " " + textBoxNume.Text.Trim());
-                            addPersNoi.Parameters.AddWithValue("@Titlu", titlu);
-                            addPersNoi.Parameters.AddWithValue("@Sex", sex);
-                            addPersNoi.ExecuteNonQuery();
+                            SqlCommand updatePersNoi = new SqlCommand("UPDATE [dbo].[PersNoi] SET [Prenume-Nume] = '" + textBoxValue.Text + " " + textBoxNume.Text + "' WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' ", sqlcon);
+                            updatePersNoi.ExecuteNonQuery();
                         }
                     }
                     else if (GetListaPersVechi() == false && GetListaPersNoi() == true)
                     {
+                        titlu = "Persoane Vechi";
                         using (SqlConnection sqlcon = new SqlConnection())
                         {
                             sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
                             sqlcon.Open();
-                            SqlCommand sqlCmd = new SqlCommand("DELETE FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' OR [Prenume-Nume] = '" + textBoxValue.Text + " " + textBoxNume.Text + "'", sqlcon);
-                            sqlCmd.ExecuteNonQuery();
-                            SqlCommand addPersVechi = new SqlCommand("PersVechiADD", sqlcon);
-                            addPersVechi.CommandType = CommandType.StoredProcedure;
-                            addPersVechi.Parameters.AddWithValue("@NumePers", textBoxValue.Text.Trim() + " " + textBoxNume.Text.Trim());
-                            addPersVechi.Parameters.AddWithValue("@Sex", sex);
-                            addPersVechi.ExecuteNonQuery();
+                            SqlCommand updatePersNoi = new SqlCommand("UPDATE [dbo].[PersNoi] SET [PersoaneUnice] = '" + titlu + "' WHERE [Prenume-Nume] = '" + textBoxValue.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' ", sqlcon);
+                            updatePersNoi.ExecuteNonQuery();
+                            SqlCommand deletePersNoi = new SqlCommand("DELETE FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' ", sqlcon);
+                            deletePersNoi.ExecuteNonQuery();
                         }
                     }
                     else if (GetListaPersVechi() == true && GetListaPersNoi() == false)
@@ -177,11 +209,8 @@ namespace Interfata_dbo_EUROPEDIRECT
                         {
                             sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
                             sqlcon.Open();
-                            SqlCommand addPersVechi = new SqlCommand("PersVechiADD", sqlcon);
-                            addPersVechi.CommandType = CommandType.StoredProcedure;
-                            addPersVechi.Parameters.AddWithValue("@NumePers", textBoxValue.Text.Trim() + " " + textBoxNume.Text.Trim());
-                            addPersVechi.Parameters.AddWithValue("@Sex", sex);
-                            addPersVechi.ExecuteNonQuery();
+                            SqlCommand deletePersNoi = new SqlCommand("DELETE FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' ", sqlcon);
+                            deletePersNoi.ExecuteNonQuery();
                         }
                     }
                 }
@@ -193,27 +222,21 @@ namespace Interfata_dbo_EUROPEDIRECT
                         {
                             sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
                             sqlcon.Open();
-                            SqlCommand addPersNoi = new SqlCommand("PersNoiADD", sqlcon);
-                            addPersNoi.CommandType = CommandType.StoredProcedure;
-                            addPersNoi.Parameters.AddWithValue("@NumePers", textBoxPrenume.Text.Trim() + " " + textBoxValue.Text.Trim());
-                            addPersNoi.Parameters.AddWithValue("@Titlu", titlu);
-                            addPersNoi.Parameters.AddWithValue("@Sex", sex);
-                            addPersNoi.ExecuteNonQuery();
+                            SqlCommand updatePersNoi = new SqlCommand("UPDATE [dbo].[PersNoi] SET [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxValue.Text + "' WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' ", sqlcon);
+                            updatePersNoi.ExecuteNonQuery();
                         }
                     }
                     else if (GetListaPersVechi() == false && GetListaPersNoi() == true)
                     {
+                        titlu = "Persoane Vechi";
                         using (SqlConnection sqlcon = new SqlConnection())
                         {
                             sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
                             sqlcon.Open();
-                            SqlCommand sqlCmd = new SqlCommand("DELETE FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' OR [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxValue.Text + "'", sqlcon);
-                            sqlCmd.ExecuteNonQuery();
-                            SqlCommand addPersVechi = new SqlCommand("PersVechiADD", sqlcon);
-                            addPersVechi.CommandType = CommandType.StoredProcedure;
-                            addPersVechi.Parameters.AddWithValue("@NumePers", textBoxPrenume.Text.Trim() + " " + textBoxValue.Text.Trim());
-                            addPersVechi.Parameters.AddWithValue("@Sex", sex);
-                            addPersVechi.ExecuteNonQuery();
+                            SqlCommand updatePersNoi = new SqlCommand("UPDATE [dbo].[PersNoi] SET [PersoaneUnice] = '" + titlu + "' WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxValue.Text + "' AND [Sex] = '" + sex + "' ", sqlcon);
+                            updatePersNoi.ExecuteNonQuery();
+                            SqlCommand deletePersNoi = new SqlCommand("DELETE FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' ", sqlcon);
+                            deletePersNoi.ExecuteNonQuery();
                         }
                     }
                     else if (GetListaPersVechi() == true && GetListaPersNoi() == false)
@@ -222,11 +245,8 @@ namespace Interfata_dbo_EUROPEDIRECT
                         {
                             sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
                             sqlcon.Open();
-                            SqlCommand addPersVechi = new SqlCommand("PersVechiADD", sqlcon);
-                            addPersVechi.CommandType = CommandType.StoredProcedure;
-                            addPersVechi.Parameters.AddWithValue("@NumePers", textBoxPrenume.Text.Trim() + " " + textBoxValue.Text.Trim());
-                            addPersVechi.Parameters.AddWithValue("@Sex", sex);
-                            addPersVechi.ExecuteNonQuery();
+                            SqlCommand deletePersNoi = new SqlCommand("DELETE FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' ", sqlcon);
+                            deletePersNoi.ExecuteNonQuery();
                         }
                     }
                 }
@@ -238,27 +258,21 @@ namespace Interfata_dbo_EUROPEDIRECT
                         {
                             sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
                             sqlcon.Open();
-                            SqlCommand addPersNoi = new SqlCommand("PersNoiADD", sqlcon);
-                            addPersNoi.CommandType = CommandType.StoredProcedure;
-                            addPersNoi.Parameters.AddWithValue("@NumePers", textBoxPrenume.Text.Trim() + " " + textBoxNume.Text.Trim());
-                            addPersNoi.Parameters.AddWithValue("@Titlu", titlu);
-                            addPersNoi.Parameters.AddWithValue("@Sex", textBoxValue.Text.Trim());
-                            addPersNoi.ExecuteNonQuery();
+                            SqlCommand updatePersNoi = new SqlCommand("UPDATE [dbo].[PersNoi] SET [Sex] = '" + textBoxValue.Text + "' WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' ", sqlcon);
+                            updatePersNoi.ExecuteNonQuery();
                         }
                     }
                     else if (GetListaPersVechi() == false && GetListaPersNoi() == true)
                     {
+                        titlu = "Persoane Vechi";
                         using (SqlConnection sqlcon = new SqlConnection())
                         {
                             sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
                             sqlcon.Open();
-                            SqlCommand sqlCmd = new SqlCommand("DELETE FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' OR [Sex] = '" + textBoxValue.Text + "'", sqlcon);
-                            sqlCmd.ExecuteNonQuery();
-                            SqlCommand addPersVechi = new SqlCommand("PersVechiADD", sqlcon);
-                            addPersVechi.CommandType = CommandType.StoredProcedure;
-                            addPersVechi.Parameters.AddWithValue("@NumePers", textBoxPrenume.Text.Trim() + " " + textBoxNume.Text.Trim());
-                            addPersVechi.Parameters.AddWithValue("@Sex", textBoxValue.Text.Trim());
-                            addPersVechi.ExecuteNonQuery();
+                            SqlCommand updatePersNoi = new SqlCommand("UPDATE [dbo].[PersNoi] SET [PersoaneUnice] = '" + titlu + "' WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + textBoxValue.Text + "' ", sqlcon);
+                            updatePersNoi.ExecuteNonQuery();
+                            SqlCommand deletePersNoi = new SqlCommand("DELETE FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' ", sqlcon);
+                            deletePersNoi.ExecuteNonQuery();
                         }
                     }
                     else if (GetListaPersVechi() == true && GetListaPersNoi() == false)
@@ -267,60 +281,11 @@ namespace Interfata_dbo_EUROPEDIRECT
                         {
                             sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
                             sqlcon.Open();
-                            SqlCommand addPersVechi = new SqlCommand("PersVechiADD", sqlcon);
-                            addPersVechi.CommandType = CommandType.StoredProcedure;
-                            addPersVechi.Parameters.AddWithValue("@NumePers", textBoxPrenume.Text.Trim() + " " + textBoxNume.Text.Trim());
-                            addPersVechi.Parameters.AddWithValue("@Sex", textBoxValue.Text.Trim());
-                            addPersVechi.ExecuteNonQuery();
+                            SqlCommand deletePersNoi = new SqlCommand("DELETE FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "' ", sqlcon);
+                            deletePersNoi.ExecuteNonQuery();
                         }
                     }
                 }
-                else
-                {
-                    if (GetListaPersVechi() == false && GetListaPersNoi() == false)
-                    {
-                        using (SqlConnection sqlcon = new SqlConnection())
-                        {
-                            sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
-                            sqlcon.Open();
-                            SqlCommand addPersNoi = new SqlCommand("PersNoiADD", sqlcon);
-                            addPersNoi.CommandType = CommandType.StoredProcedure;
-                            addPersNoi.Parameters.AddWithValue("@NumePers", textBoxPrenume.Text.Trim() + " " + textBoxNume.Text.Trim());
-                            addPersNoi.Parameters.AddWithValue("@Titlu", titlu);
-                            addPersNoi.Parameters.AddWithValue("@Sex", sex);
-                            addPersNoi.ExecuteNonQuery();
-                        }
-                    }
-                    else if (GetListaPersVechi() == false && GetListaPersNoi() == true)
-                    {
-                        using (SqlConnection sqlcon = new SqlConnection())
-                        {
-                            sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
-                            sqlcon.Open();
-                            SqlCommand sqlCmd = new SqlCommand("DELETE FROM [dbo].[PersNoi] WHERE [Prenume-Nume] = '" + textBoxPrenume.Text + " " + textBoxNume.Text + "' AND [Sex] = '" + sex + "'", sqlcon);
-                            sqlCmd.ExecuteNonQuery();
-                            SqlCommand addPersVechi = new SqlCommand("PersVechiADD", sqlcon);
-                            addPersVechi.CommandType = CommandType.StoredProcedure;
-                            addPersVechi.Parameters.AddWithValue("@NumePers", textBoxPrenume.Text.Trim() + " " + textBoxNume.Text.Trim());
-                            addPersVechi.Parameters.AddWithValue("@Sex", sex);
-                            addPersVechi.ExecuteNonQuery();
-                        }
-                    }
-                    else if (GetListaPersVechi() == true && GetListaPersNoi() == false)
-                    {
-                        using (SqlConnection sqlcon = new SqlConnection())
-                        {
-                            sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
-                            sqlcon.Open();
-                            SqlCommand addPersVechi = new SqlCommand("PersVechiADD", sqlcon);
-                            addPersVechi.CommandType = CommandType.StoredProcedure;
-                            addPersVechi.Parameters.AddWithValue("@NumePers", textBoxPrenume.Text.Trim() + " " + textBoxNume.Text.Trim());
-                            addPersVechi.Parameters.AddWithValue("@Sex", sex);
-                            addPersVechi.ExecuteNonQuery();
-                        }
-                    }
-                }
-                
                 using (SqlConnection sqlcon = new SqlConnection())
                 {
                     sqlcon.ConnectionString = ConfigurationManager.ConnectionStrings["ConexiuneDBO"].ToString();
