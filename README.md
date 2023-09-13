@@ -1,16 +1,11 @@
 # EUROPEDIRECT database visual interface
-This project needs a "Report" folder in the C:\ partition to export the reports and a database named "SQL Evidenta".
-If you want another name for the database, access the "app.config" file from the "Interfata dbo EUROPEDIRECT" file and modify the following line of code.
+This project requires a 'Report' folder in the C:\ partition for exporting reports and a database named 'SQL Evidenta.' If you wish to use a different database name, access the 'app.config' file within the 'Interfata dbo EUROPEDIRECT' folder and modify the following line of code:
 
+Replace 'SQL Evidenta' with your desired name: 'Initial Catalog=Desired Name.'
+
+The database was created using 'Microsoft SQL Server Management Studio 18.' To set it up, install 'Microsoft SQL Server Management Studio 18,' create a database with the name 'SQL Evidenta' (or your preferred name), open a query, and execute the following commands one by one.
 
 <add name="ConexiuneDBO" connectionString ="Data Source=.\SQLEXPRESS;Initial Catalog=SQL Evidenta;Integrated Security=True"/>
-
-
-Replace "SQL Evidenta" with the desired name "Initial Catalog=Desired Name"
-
-The database was created using "Microsoft SQL Server Management Studio 18".
-Install "Microsoft SQL Server Management Studio 18", create a database with the name "SQL Evidenta" or whatever name you want, open a query and enter the following in turn.
-
 
 CREATE TABLE [dbo].[PersNoi] (
     [ID]               INT          IDENTITY (1, 1) NOT NULL,
